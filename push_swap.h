@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:47:24 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/03/01 22:03:37 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/03/03 00:48:56 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,9 @@ void	ft_rra(t_stack **s_a);
 void	ft_rrb(t_stack **s_b);
 void	ft_rrr(t_stack **s_a, t_stack **s_b);
 
+void	ft_first_push_to_b(t_var *var, t_stack **s_a, t_stack **s_b);
+void	ft_final_sort(t_stack **s_a, t_stack **s_b);
+int		ft_cnt_inst(int pos, int size);
+void	ft_push_too(t_stack **s_a, t_stack **s_b, int pos);
+int		ft_get_max_index(t_stack **stk);
 #endif

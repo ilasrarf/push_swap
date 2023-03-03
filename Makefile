@@ -6,7 +6,7 @@
 #    By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 19:06:19 by ilasrarf          #+#    #+#              #
-#    Updated: 2023/03/01 17:57:52 by ilasrarf         ###   ########.fr        #
+#    Updated: 2023/03/03 00:49:08 by ilasrarf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,14 +28,19 @@ SRC = 	push_swap.c \
 		tools/instraction1.c \
 		tools/instraction2.c \
 		tools/instraction3.c \
-		
+		tools/ft_push_b_chank.c \
+		tools/ft_final_sort.c \
+		tools/ft_cnt_instuct.c \
+		tools/ft_puch_too.c \
+		tools/ft_get_indx.c \
 
 SRC_O =  ${SRC:.c=.o}
 
 NAME = push_swap
 RM = rm -rf
 CC = cc
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g
+# -Wall -Werror -Wextra
 
 all: $(NAME)
 

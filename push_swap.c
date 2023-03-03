@@ -6,11 +6,25 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:50:33 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/03/01 21:57:02 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/03/03 18:10:51 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_print(t_stack *s_a)
+{
+	t_stack	*u;
+
+	u = s_a;
+	while (s_a)
+	{
+		printf("%d----", s_a->cnt);
+		printf("%d\n", s_a->i);
+		s_a = s_a->next;
+	}
+	s_a = u;
+}
 
 void	pars(char **args, t_stack **s_a)
 {
@@ -38,9 +52,15 @@ void	pars(char **args, t_stack **s_a)
 	ft_sort_index(*s_a);
 }
 
+void	ff(void)
+{
+	system("leaks push_swap");
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	*s_a;
+	t_stack	*s_b;
 	t_var	var;
 
 	var.size_b = 0;
@@ -48,5 +68,7 @@ int	main(int ac, char **av)
 		return (ft_error_writer("!!ERROR!!"), 0);
 	pars(av, &s_a);
 	var.size_a = ft_lstsize(s_a);
-	printf("%d", var.size_a);
+	ft_first_push_to_b(&var, &s_a, &s_b);
+	ft_final_sort(&s_a, &s_b);
+	ft_print(s_b);
 }
