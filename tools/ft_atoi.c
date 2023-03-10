@@ -6,19 +6,22 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:35:22 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/02/20 19:33:50 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/03/10 17:57:47 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_max_min_handl(long i)
+void	ft_max_min_handl(long i, t_stack **s_a)
 {
 	if (i > 2147483647 || i < -2147483648)
-		ft_error_writer("!!ERROR!!");
+	{
+		ft_lstclear(s_a);
+		ft_error_writer("Error\n");
+	}
 }
 
-int	ft_atoi(char *str)
+int	ft_atoi(char *str, t_stack **s_a)
 {
 	long	i;
 	long	res;
@@ -32,7 +35,7 @@ int	ft_atoi(char *str)
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i + 1] < '0' || str[i + 1] > '9')
-			ft_error_writer("!!ERROR!!");
+			ft_error_writer("Error\n");
 		if (str[i] == '-')
 			signe *= -1;
 		i++;
@@ -43,6 +46,6 @@ int	ft_atoi(char *str)
 		res = res + str[i] - '0';
 		i++;
 	}
-	ft_max_min_handl(res * signe);
+	ft_max_min_handl(res * signe, s_a);
 	return (res * signe);
 }

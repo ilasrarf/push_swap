@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puch_too.c                                      :+:      :+:    :+:   */
+/*   ft_deja_msorty.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 22:24:18 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/03/04 03:37:50 by ilasrarf         ###   ########.fr       */
+/*   Created: 2023/03/05 03:25:29 by ilasrarf          #+#    #+#             */
+/*   Updated: 2023/03/10 15:44:37 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_push_too(t_stack **s_a, t_stack **s_b, int pos)
+void	ft_deja_msorty(t_stack **s_a)
 {
-	int	size;
-	int	i;
+	int		cnt;
+	t_stack	*tmp;
 
-	size = ft_lstsize(*s_b);
-	i = ft_cnt_inst(pos, size);
-	if (pos <= size / 2)
+	cnt = 1;
+	tmp = (*s_a);
+	while ((*s_a)->next)
 	{
-		while (i > 0)
-		{
-			ft_rb(s_b);
-			i--;
-		}
-		ft_pa(s_a, s_b);
+		if ((*s_a)->i < (*s_a)->next->i)
+			cnt++;
+		(*s_a) = (*s_a)->next;
 	}
-	else
+	(*s_a) = tmp;
+	if (cnt == ft_lstsize(*s_a))
 	{
-		while (i > 0)
-		{
-			ft_rrb(s_b);
-			i--;
-		}
-		ft_pa(s_a, s_b);
+		ft_lstclear(s_a);
+		exit(0);
 	}
 }

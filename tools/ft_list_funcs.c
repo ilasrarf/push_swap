@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 23:44:26 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/03/01 18:31:30 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:41:20 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,19 @@ int	ft_lstsize(t_stack *lst)
 	if (lst)
 		return (1 + ft_lstsize(lst->next));
 	return (0);
+}
+
+void	ft_lstclear(t_stack **lst)
+{
+	t_stack	*temp;
+
+	if (!lst || !*lst)
+		return ;
+	temp = *lst;
+	while (temp)
+	{
+		temp = temp->next;
+		ft_lstdelone(*lst);
+		*lst = temp;
+	}
 }

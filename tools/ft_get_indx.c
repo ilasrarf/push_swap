@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 00:41:35 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/03/03 01:02:59 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:44:08 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_get_max_index(t_stack **stk)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 	int		i;
 
 	tmp = *stk;
@@ -22,6 +22,25 @@ int	ft_get_max_index(t_stack **stk)
 	while (*stk)
 	{
 		if ((*stk)->i > i)
+			i = (*stk)->i;
+		(*stk) = (*stk)->next;
+	}
+	*stk = tmp;
+	return (i);
+}
+
+int	ft_get_be_max_index(t_stack **stk)
+{
+	int		i;
+	int		max;
+	t_stack	*tmp;
+
+	i = 0;
+	tmp = *stk;
+	max = ft_get_max_index(stk);
+	while (*stk)
+	{
+		if ((*stk)->i > i && (*stk)->i < max)
 			i = (*stk)->i;
 		(*stk) = (*stk)->next;
 	}

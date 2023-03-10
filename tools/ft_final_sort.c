@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 20:27:53 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/03/03 02:11:11 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/03/03 23:20:34 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,11 @@ void	ft_final_sort(t_stack **s_a, t_stack **s_b)
 		max = ft_get_pos(*s_b, ft_get_max_index(s_b));
 		be_max = ft_get_pos(*s_b, ft_lstsize(*s_b) - 1);
 		if (ft_cnt_inst(max, ft_lstsize(*s_b))
-			<= ft_cnt_inst(be_max, ft_lstsize(*s_b)))
-		{
+			< ft_cnt_inst(be_max, ft_lstsize(*s_b)))
 			ft_push_too(s_a, s_b, ft_get_pos(*s_b, ft_get_max_index(s_b)));
-			ft_push_too(s_a, s_b, ft_get_pos(*s_b, ft_lstsize(*s_b) - 1));
-		}
-		else if (ft_cnt_inst(max, ft_lstsize(*s_b))
-			>= ft_cnt_inst(be_max, ft_lstsize(*s_b)))
+		else
 		{
-			ft_push_too(s_a, s_b, ft_get_pos(*s_b, ft_lstsize(*s_b) - 1));
+			ft_push_too(s_a, s_b, ft_get_pos(*s_b, ft_get_be_max_index(s_b)));
 			ft_push_too(s_a, s_b, ft_get_pos(*s_b, ft_get_max_index(s_b)));
 			if ((*s_a)->i > (*s_a)->next->i)
 				ft_sa(s_a);

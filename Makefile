@@ -6,7 +6,7 @@
 #    By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 19:06:19 by ilasrarf          #+#    #+#              #
-#    Updated: 2023/03/03 00:49:08 by ilasrarf         ###   ########.fr        #
+#    Updated: 2023/03/10 18:05:40 by ilasrarf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,19 +33,18 @@ SRC = 	push_swap.c \
 		tools/ft_cnt_instuct.c \
 		tools/ft_puch_too.c \
 		tools/ft_get_indx.c \
+		tools/ft_sort_3_5.c \
+		tools/ft_deja_msorty.c \
+		tools/ft_list_funcs2.c \
 
 SRC_O =  ${SRC:.c=.o}
 
 NAME = push_swap
 RM = rm -rf
 CC = cc
-FLAGS = -Wall -Werror -Wextra -g
-# -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
-
-# debug: $(SRC_O)
-# 	$(CC) -g $(FLAGS) $(SRC_O) -o $(NAME) && lldb $(NAME)
 
 $(NAME): $(SRC_O) push_swap.h
 	$(CC) $(FLAGS) $(SRC_O) -o $(NAME)

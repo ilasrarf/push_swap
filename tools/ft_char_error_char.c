@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 22:31:53 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/02/21 22:32:11 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/03/10 17:58:39 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_empty_arg(char *str)
 	while ((str[i] == ' ' || str[i] == '\t') || str[i] == '\0')
 	{
 		if (str[i] == '\0')
-			ft_error_writer("!!ERROR!!");
+			ft_error_writer("Error\n");
 		i++;
 	}
 }
@@ -46,34 +46,12 @@ void	ft_error_char(char **args)
 			if ((args[i][j] < '0' || args[i][j] > '9') && args[i][j] != ' ')
 			{
 				if (args[i][j] != '+' && args[i][j] != '-')
-					ft_error_writer("!!ERROR!!");
+					ft_error_writer("Error\n");
 			}
 			else if ((args[i][j] >= '0' && args[i][j] <= '9'))
 			{
 				if (args[i][j + 1] == '+' || args[i][j + 1] == '-')
-					ft_error_writer("!!ERROR!!");
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-void	ft_smap_signe(char **str)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (str[i])
-	{
-		j = 0;
-		while (str[i][j])
-		{
-			if ((str[i][j] == '+' || str[i][j] == '-') && j > 0)
-			{
-				if (str[i][j - 1])
-					ft_error_writer("!!ERROR!!");
+					ft_error_writer("Error\n");
 			}
 			j++;
 		}
@@ -89,7 +67,6 @@ void	ft_check_dup(t_stack **s_a)
 	int		j;
 
 	i = 0;
-	j = 0;
 	tmp1 = *s_a;
 	tmp = *s_a;
 	while (tmp)
@@ -99,7 +76,10 @@ void	ft_check_dup(t_stack **s_a)
 		while (tmp1)
 		{
 			if (tmp->cnt == tmp1->cnt && i != j)
-				ft_error_writer("!!ERROR!!");
+			{
+				ft_lstclear(s_a);
+				ft_error_writer("Error\n");
+			}
 			j++;
 			tmp1 = tmp1->next;
 		}

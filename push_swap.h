@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:47:24 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/03/03 00:48:56 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/03/10 17:52:28 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_stk
 	struct s_stk	*next;
 }	t_stack;
 
-int		ft_atoi(char *str);
+int		ft_atoi(char *str , t_stack **s_a);
 void	pars(char **args, t_stack **s_a);
 void	ft_empty_arg(char *str);
 void	ft_error_char(char **args);
@@ -50,7 +50,6 @@ int		ft_lstsize(t_stack *lst);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
 void	ft_check_dup(t_stack **s_a);
-void	ft_smap_signe(char **str);
 int		ft_get_min(t_stack *s_a);
 void	ft_def_index(t_stack *s_a);
 void	ft_sort_index(t_stack *s_a);
@@ -83,4 +82,16 @@ void	ft_final_sort(t_stack **s_a, t_stack **s_b);
 int		ft_cnt_inst(int pos, int size);
 void	ft_push_too(t_stack **s_a, t_stack **s_b, int pos);
 int		ft_get_max_index(t_stack **stk);
+int		ft_get_be_max_index(t_stack **stk);
+int		ft_get_pos(t_stack *stk, int indx);
+
+void	ft_sort_3(t_stack **s_a);
+void	ft_sort_5(t_stack **s_a, t_stack **s_b);
+void	ft_sort_4(t_stack **s_a, t_stack **s_b);
+
+void	ft_deja_msorty(t_stack **s_a);
+
+void	ft_lstclear(t_stack **lst);
+void	ft_lstdelone(t_stack *lst);
+
 #endif
