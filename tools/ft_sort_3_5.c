@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 03:00:45 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/03/04 19:45:26 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/03/10 18:16:55 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ void	ft_sort_3(t_stack **s_a)
 		&& (*s_a)->next->i < (*s_a)->next->next->i
 		&& (*s_a)->next->next->i > (*s_a)->i)
 		ft_sa(s_a);
-	else if ((*s_a)->i > (*s_a)->next->i
-		&& (*s_a)->next->i > (*s_a)->next->next->i
-		&& (*s_a)->next->next->i < (*s_a)->i)
+	else if ((*s_a)->i > (*s_a)->next->i && (*s_a)->next->next->i < (*s_a)->i
+		&& (*s_a)->next->i > (*s_a)->next->next->i)
 	{
 		ft_sa(s_a);
 		ft_rra(s_a);

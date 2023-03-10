@@ -6,7 +6,7 @@
 #    By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 19:06:19 by ilasrarf          #+#    #+#              #
-#    Updated: 2023/03/10 18:05:40 by ilasrarf         ###   ########.fr        #
+#    Updated: 2023/03/10 20:39:44 by ilasrarf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,10 +46,10 @@ FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME): $(SRC_O) push_swap.h
+$(NAME): $(SRC_O)
 	$(CC) $(FLAGS) $(SRC_O) -o $(NAME)
 
-%.o: %.c
+%.o: %.c push_swap.h
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:27:57 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/03/08 14:53:37 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/03/10 20:30:52 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,84 +32,45 @@ int	ft_get_inde(t_stack **s_a, int i, int j)
 	return (k);
 }
 
+void	normin(t_norm *norm, t_stack **s_a, t_stack **s_b)
+{
+	if ((*s_a)->i >= norm->i && (*s_a)->i <= norm->j)
+	{
+		norm->h++;
+		if ((*s_a)->i <= (norm->i + norm->j) / 2)
+			ft_pb(s_a, s_b);
+		else
+		{
+			ft_pb(s_a, s_b);
+			ft_rb(s_b);
+		}
+	}
+	else
+		ft_ra(s_a);
+}
+
 void	ft_first_push_to_b(t_var *var, t_stack **s_a, t_stack **s_b)
 {
-	int		i;
-	int		j;
-	int		rang;
-	int		h;
 	t_stack	*tmp;
+	t_norm	*norm;
 
-	h = 0;
+	norm = (t_norm *)ft_calloc(1, sizeof(t_norm));
 	tmp = *s_a;
 	if (ft_lstsize(*s_a) <= 100)
-		rang = var->size_a / 5;
+		norm->rang = var->size_a / 5;
 	else
-		rang = var->size_a / 9;
-	i = 1;
-	j = rang;
+		norm->rang = var->size_a / 9;
+	norm->i = 1;
+	norm->j = norm->rang;
 	while (*s_a)
 	{
-		if ((*s_a)->i >= i && (*s_a)->i <= j)
+		normin(norm, s_a, s_b);
+		if (norm->h == norm->rang)
 		{
-			h++;
-			if ((*s_a)->i <= (i + j) / 2)
-				ft_pb(s_a, s_b);
-			else
-			{
-				ft_pb(s_a, s_b);
-				ft_rb(s_b);
-			}
-		}
-		else
-			ft_ra(s_a);
-		if (h == rang)
-		{
-			h = 0;
-			i = i + rang;
-			j = j + rang;
+			norm->h = 0;
+			norm->i = norm->i + norm->rang;
+			norm->j = norm->j + norm->rang;
 		}
 	}
 	*s_a = tmp;
 }
-
-// void	ft_first_push_to_b(t_var *var, t_stack **s_a, t_stack **s_b)
-// {
-// 	int		i;
-// 	int		j;
-// 	int		rang;
-// 	int		h;
-// 	t_stack	*tmp;
-
-// 	h = 0;
-// 	tmp = *s_a;
-// 	if (ft_lstsize(*s_a) <= 100)
-// 		rang = var->size_a / 5;
-// 	else
-// 		rang = var->size_a / 9;
-// 	i = 1;
-// 	j = rang;
-// 	while (*s_a)
-// 	{
-// 		if ((*s_a)->i >= i && (*s_a)->i <= j)
-// 		{
-// 			h++;
-// 			if ((*s_a)->i <= (i + j) / 2)
-// 				ft_pb(s_a, s_b);
-// 			else
-// 			{
-// 				ft_pb(s_a, s_b);
-// 				ft_rb(s_b);
-// 			}
-// 		}
-// 		else
-// 			ft_ra(s_a);
-// 		if (h == rang)
-// 		{
-// 			h = 0;
-// 			i = i + rang;
-// 			j = j + rang;
-// 		}
-// 	}
-// 	*s_a = tmp;
-// }

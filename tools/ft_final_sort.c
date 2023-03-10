@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 20:27:53 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/03/03 23:20:34 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/03/10 19:05:00 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,25 @@ int	ft_get_pos(t_stack *stk, int indx)
 	return (0);
 }
 
+void	ft_set_null(int size, t_stack **s_a)
+{
+	t_stack	*tmp;
+
+	tmp = (*s_a);
+	while (size > 1)
+	{
+		size--;
+		(*s_a) = (*s_a)->next;
+	}
+	(*s_a)->next = NULL;
+	(*s_a) = tmp;
+}
+
 void	ft_final_sort(t_stack **s_a, t_stack **s_b)
 {
 	int		max;
 	int		be_max;
 	int		size;
-	t_stack	*tmp;
 
 	size = ft_lstsize(*s_b);
 	while (*s_b)
@@ -56,12 +69,5 @@ void	ft_final_sort(t_stack **s_a, t_stack **s_b)
 				ft_sa(s_a);
 		}
 	}
-	tmp = (*s_a);
-	while (size > 1)
-	{
-		size--;
-		(*s_a) = (*s_a)->next;
-	}
-	(*s_a)->next = NULL;
-	(*s_a) = tmp;
+	ft_set_null(size, s_a);
 }
